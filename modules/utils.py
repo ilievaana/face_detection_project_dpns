@@ -18,6 +18,20 @@ def calculate_ear(landmarks):
 
     return eye_aspect_ratio(left_eye), eye_aspect_ratio(right_eye)
 
+def calculate_mar(landmarks):
+    """
+    Calculates the Mouth Aspect Ratio (MAR) for detecting yawning.
+    """
+    top_lip = np.linalg.norm(np.array([landmarks.part(51).x, landmarks.part(51).y]) -
+                             np.array([landmarks.part(57).x, landmarks.part(57).y]))
+    bottom_lip = np.linalg.norm(np.array([landmarks.part(62).x, landmarks.part(62).y]) -
+                                np.array([landmarks.part(66).x, landmarks.part(66).y]))
+    mouth_width = np.linalg.norm(np.array([landmarks.part(48).x, landmarks.part(48).y]) -
+                                 np.array([landmarks.part(54).x, landmarks.part(54).y]))
+
+    mar = (top_lip + bottom_lip) / (2.0 * mouth_width)
+    return mar
+
 def draw_landmarks(image, landmarks):
     """
     Draws facial landmarks on the given image.
