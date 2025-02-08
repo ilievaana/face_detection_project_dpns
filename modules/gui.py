@@ -4,6 +4,7 @@ from PIL import Image, ImageTk, ImageSequence
 from modules.image_processing import process_image
 from modules.video_processing import process_video
 
+
 class AnimatedGIF:
     """Класа за прикажување GIF анимација во Tkinter."""
     def __init__(self, canvas, gif_path):

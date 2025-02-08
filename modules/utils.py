@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 
+
 def calculate_ear(landmarks):
     """
     Calculates the Eye Aspect Ratio (EAR) for both eyes.

@@ -2,6 +2,7 @@ import cv2
 import dlib
 from modules.utils import draw_landmarks, calculate_ear, overlay_text
 
+
 def process_image(filepath):
     model_path = "resources/shape_predictor_68_face_landmarks.dat"
     detector = dlib.get_frontal_face_detector()

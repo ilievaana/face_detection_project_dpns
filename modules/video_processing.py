@@ -3,6 +3,7 @@ import dlib
 import numpy as np
 from modules.utils import calculate_ear, calculate_mar, draw_landmarks, overlay_text
 
+
 # Constants
 EAR_THRESHOLD = 0.25
 MAR_THRESHOLD = 0.6
