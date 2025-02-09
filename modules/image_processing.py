@@ -8,25 +8,24 @@ def process_image(filepath):
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor(model_path)
 
-    # Вчитување на сликата
     image = cv2.imread(filepath)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # Детекција на лица
+    # Face detection
     faces = detector(gray)
     for face in faces:
         landmarks = predictor(gray, face)
         draw_landmarks(image, landmarks)
 
-        # Пресметај EAR
+        # Calculate EAR
         ear_left, ear_right = calculate_ear(landmarks)
         avg_ear = (ear_left + ear_right) / 2.0
         status = "Well Rested" if avg_ear > 0.25 else "Drowsiness Detected"
 
-        # Додај текст
+        # Add text overlay
         overlay_text(image, status)
 
-    # Прикажи ја резултатната слика
+    # View the resulting image
     cv2.imshow("Detected Landmarks", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()

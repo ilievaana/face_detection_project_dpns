@@ -6,7 +6,7 @@ from modules.video_processing import process_video
 
 
 class AnimatedGIF:
-    """Класа за прикажување GIF анимација во Tkinter."""
+    """A class for displaying a GIF animation in Tkinter."""
     def __init__(self, canvas, gif_path):
         self.canvas = canvas
         self.gif_path = gif_path
@@ -23,7 +23,7 @@ class AnimatedGIF:
     def animate(self):
         self.canvas.create_image(0, 0, anchor=tk.NW, image=self.frames[self.current_frame])
         self.current_frame = (self.current_frame + 1) % len(self.frames)
-        self.canvas.after(100, self.animate)  # 100ms помеѓу рамките
+        self.canvas.after(100, self.animate)
 
 
 def main():
@@ -52,17 +52,17 @@ def main():
 
     root = tk.Tk()
     root.title("Face Detection Application")
-    root.geometry("800x600")  # Поставување на големина на прозорецот
+    root.geometry("800x600")
 
-    # Canvas за позадинската анимација
+    # Canvas for background animation
     canvas = tk.Canvas(root, width=800, height=600)
     canvas.pack(fill=tk.BOTH, expand=True)
 
-    # Додавање анимирана позадина (GIF)
-    gif_player = AnimatedGIF(canvas, "resources/background.gif")  # Замени со патот до твојот GIF
+    # GIF animation
+    gif_player = AnimatedGIF(canvas, "resources/background.gif")
     gif_player.animate()
 
-    # Текст заглавие
+    # Text
     tk.Label(
         root,
         text="Face Detection Application",
@@ -71,8 +71,8 @@ def main():
         fg="#FFFFFF"
     ).place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-    # Копчиња за интеракција
-    button_frame = tk.Frame(root, bg=root["bg"])  # Користи ја позадината на прозорецот
+    # Buttons
+    button_frame = tk.Frame(root, bg=root["bg"])
     button_frame.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
 
     buttons = [
@@ -90,14 +90,14 @@ def main():
             bg=color,
             fg="white",
             font=("Helvetica", 14),
-            bd=0  # Без рамки околу копчињата
+            bd=0
         )
         btn.grid(row=i, column=0, padx=20, pady=10)
         btn.default_bg = color
         btn.bind("<Enter>", on_enter)
         btn.bind("<Leave>", on_leave)
 
-    # Инструкции текст
+    # Instructions
     instructions_label = tk.Label(
         root,
         text=(
@@ -111,7 +111,7 @@ def main():
         justify="center"
     )
 
-    # Копче за инструкции
+    # Button for instructions
     instructions_btn = tk.Button(
         root,
         text="Read Instructions!",
@@ -121,7 +121,7 @@ def main():
         font=("Helvetica", 14, "bold"),
         width=20,
         height=2,
-        bd=0  # Без рамки околу копчето
+        bd=0
     )
     instructions_btn.place(relx=0.5, rely=0.8, anchor=tk.CENTER)
     instructions_btn.default_bg = "#FFC300"

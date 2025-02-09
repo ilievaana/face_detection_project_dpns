@@ -6,7 +6,7 @@ from modules.video_processing import process_video
 
 
 class AnimatedGIF:
-    """Класа за прикажување GIF анимација во Tkinter."""
+    """A class for displaying a GIF animation in Tkinter."""
     def __init__(self, canvas, gif_path):
         self.canvas = canvas
         self.gif_path = gif_path
@@ -23,7 +23,7 @@ class AnimatedGIF:
     def animate(self):
         self.canvas.create_image(0, 0, anchor=tk.NW, image=self.frames[self.current_frame])
         self.current_frame = (self.current_frame + 1) % len(self.frames)
-        self.canvas.after(100, self.animate)  # 100ms помеѓу рамките
+        self.canvas.after(100, self.animate)
 
 def main():
     def open_image():
@@ -53,15 +53,15 @@ def main():
     root.title("Face Detection Application")
     root.geometry("800x600")
 
-    # Canvas за позадинската анимација
+    # Canvas for background animation
     canvas = tk.Canvas(root, width=800, height=600)
     canvas.pack(fill=tk.BOTH, expand=True)
 
-    # Додавање анимирана позадина (GIF)
+    # GIF background
     gif_player = AnimatedGIF(canvas, "resources/background.gif")
     gif_player.animate()
 
-    # Текст заглавие
+    # Text
     tk.Label(
         root,
         text="Face Detection Application",
@@ -70,7 +70,7 @@ def main():
         fg="#FFFFFF"
     ).place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-    # Копчиња за интеракција
+    # Buttons
     button_frame = tk.Frame(root, bg=root["bg"])
     button_frame.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
 

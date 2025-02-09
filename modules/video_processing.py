@@ -7,11 +7,11 @@ from modules.utils import calculate_ear, calculate_mar, draw_landmarks, overlay_
 # Constants
 EAR_THRESHOLD = 0.25
 MAR_THRESHOLD = 0.6
-BLINK_FRAME_THRESHOLD = 3
+BLINK_FRAME_THRESHOLD = 3 # number of frames for blinking
 DROWSINESS_FRAME_THRESHOLD = 30
-CLOSED_EYE_TIME_THRESHOLD = 2  # секунди за затворени очи
-YAWN_FRAME_THRESHOLD = 15  # број на кадри за континуирано зевање
-FPS = 30  # претпоставен број на кадри во секунда
+CLOSED_EYE_TIME_THRESHOLD = 2  # seconds for closed eyes
+YAWN_FRAME_THRESHOLD = 15  # number of frames for continuous yawning
+FPS = 30  # number of frames per second
 
 def process_video():
     model_path = "resources/shape_predictor_68_face_landmarks.dat"
